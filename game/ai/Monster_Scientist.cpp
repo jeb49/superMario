@@ -15,8 +15,15 @@ public:
 	
 	virtual void		OnDeath				( void );
 	
+	bool				IsEnemyVisible();
+
 	// Add some dynamic externals for debugging
 	virtual void		GetDebugInfo		( debugInfoProc_t proc, void* userData );
+	
+
+	
+	//enemy.fl.visible == false; //this aint it chief
+
 
 private:
 
@@ -63,6 +70,11 @@ void rvMonsterScientist::GetDebugInfo	( debugInfoProc_t proc, void* userData ) {
 	// Base class first
 	idAI::GetDebugInfo ( proc, userData );
 }
+
+bool rvMonsterScientist::IsEnemyVisible(){
+	return true;
+}
+
 
 /*
 ===============================================================================

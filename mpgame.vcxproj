@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="DebugInline|Win32">
       <Configuration>DebugInline</Configuration>
@@ -15,6 +15,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
+    <ProjectName>MPGame</ProjectName>
     <ProjectGuid>{F2EF9123-B7C3-4F2F-A351-747B595BB534}</ProjectGuid>
     <RootNamespace>MPGame</RootNamespace>
     <Keyword>Win32Proj</Keyword>
@@ -22,16 +23,19 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugInline|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -40,36 +44,38 @@
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugInline|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../$(Platform)/$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</IntDir>
-    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</IgnoreImportLibrary>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='DebugInline|Win32'">../$(Platform)/$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='DebugInline|Win32'">$(OutDir)</IntDir>
-    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='DebugInline|Win32'">true</IgnoreImportLibrary>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='DebugInline|Win32'">false</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)</IntDir>
-    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</IgnoreImportLibrary>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>../$(Platform)/$(Configuration)\</OutDir>
+    <IntDir>$(OutDir)</IntDir>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugInline|Win32'">
+    <OutDir>../$(Platform)/$(Configuration)\</OutDir>
+    <IntDir>$(OutDir)</IntDir>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>../$(Platform)/$(Configuration)\</OutDir>
+    <IntDir>$(OutDir)</IntDir>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;GAME_DLL;GAME_MPAPI;Q4SDK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -79,8 +85,7 @@
       <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>
-      </PrecompiledHeaderFile>
+      <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile>$(IntDir)$(ProjectName)/$(ProjectName).pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>$(IntDir)$(ProjectName)/</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)$(ProjectName)/</ObjectFileName>
@@ -99,17 +104,13 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(IntDir)$(ProjectName)x86.pdb</ProgramDatabaseFile>
       <GenerateMapFile>false</GenerateMapFile>
-      <MapFileName>
-      </MapFileName>
+      <MapFileName />
       <MapExports>false</MapExports>
       <SubSystem>NotSet</SubSystem>
       <StackReserveSize>16000000</StackReserveSize>
       <StackCommitSize>16000000</StackCommitSize>
       <LargeAddressAware>true</LargeAddressAware>
       <BaseAddress>0x20000000</BaseAddress>
-      <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <DataExecutionPrevention>
-      </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
@@ -117,7 +118,6 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;_INLINEDEBUG;GAME_DLL;GAME_MPAPI;Q4SDK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -126,8 +126,7 @@
       <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>
-      </PrecompiledHeaderFile>
+      <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile>$(IntDir)$(ProjectName)/$(ProjectName).pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>$(IntDir)$(ProjectName)/</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)$(ProjectName)/</ObjectFileName>
@@ -138,31 +137,26 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
     </ClCompile>
-    <ResourceCompile>
-      <ShowProgress>true</ShowProgress>
-    </ResourceCompile>
     <Link>
       <AdditionalDependencies>$(IntDir)idLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(IntDir)$(ProjectName)x86.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ModuleDefinitionFile>.\mpgame\mpgame.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(IntDir)$(ProjectName)x86.pdb</ProgramDatabaseFile>
       <GenerateMapFile>false</GenerateMapFile>
-      <MapFileName>
-      </MapFileName>
+      <MapFileName />
       <MapExports>false</MapExports>
       <SubSystem>NotSet</SubSystem>
       <StackReserveSize>16000000</StackReserveSize>
       <StackCommitSize>16000000</StackCommitSize>
       <LargeAddressAware>true</LargeAddressAware>
       <BaseAddress>0x20000000</BaseAddress>
-      <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <DataExecutionPrevention>
-      </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
+    <ResourceCompile>
+      <ShowProgress>true</ShowProgress>
+    </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -171,7 +165,6 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <OmitFramePointers>false</OmitFramePointers>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;_FINAL;GAME_DLL;GAME_MPAPI;Q4SDK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -180,14 +173,12 @@
       <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>
-      </PrecompiledHeaderFile>
+      <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile>$(IntDir)$(ProjectName)/$(ProjectName).pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>$(IntDir)$(ProjectName)/</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)$(ProjectName)/</ObjectFileName>
       <ProgramDataBaseFileName>$(IntDir)$(ProjectName)x86.pdb</ProgramDataBaseFileName>
-      <BrowseInformation>
-      </BrowseInformation>
+      <BrowseInformation />
       <BrowseInformationFile>$(IntDir)$(ProjectName)/</BrowseInformationFile>
       <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -196,6 +187,7 @@
     <Link>
       <AdditionalOptions>/MACHINE:I386 /fixed:no %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>$(IntDir)idLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(IntDir)$(ProjectName)x86.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ModuleDefinitionFile>.\mpgame\mpgame.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -208,12 +200,8 @@
       <LargeAddressAware>true</LargeAddressAware>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <EntryPointSymbol>
-      </EntryPointSymbol>
+      <EntryPointSymbol />
       <BaseAddress>0x20000000</BaseAddress>
-      <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <DataExecutionPrevention>
-      </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
@@ -240,7 +228,6 @@
     <ClCompile Include="mpgame\IK.cpp" />
     <ClCompile Include="mpgame\Instance.cpp" />
     <ClCompile Include="mpgame\Item.cpp" />
-    <ClCompile Include="mpgame\Lagometer.cpp" />
     <ClCompile Include="mpgame\Light.cpp" />
     <ClCompile Include="mpgame\LipSync.cpp" />
     <ClCompile Include="mpgame\Misc.cpp" />
@@ -258,6 +245,7 @@
     <ClCompile Include="mpgame\TramGate.cpp" />
     <ClCompile Include="mpgame\Trigger.cpp" />
     <ClCompile Include="mpgame\WorldSpawn.cpp" />
+    <ClCompile Include="mpgame\Lagometer.cpp" />
     <ClCompile Include="mpgame\ai\AAS.cpp" />
     <ClCompile Include="mpgame\ai\AAS_debug.cpp" />
     <ClCompile Include="mpgame\ai\AAS_Find.cpp" />
@@ -305,6 +293,10 @@
     <ClCompile Include="mpgame\ai\Monster_TurretFlying.cpp" />
     <ClCompile Include="mpgame\spawner.cpp" />
     <ClCompile Include="mpgame\ai\VehicleAI.cpp" />
+    <ClCompile Include="mpgame\anim\Anim.cpp" />
+    <ClCompile Include="mpgame\anim\Anim_Blend.cpp" />
+    <ClCompile Include="mpgame\anim\Anim_Import.cpp" />
+    <ClCompile Include="mpgame\anim\Anim_Testmodel.cpp" />
     <ClCompile Include="mpgame\client\ClientAFEntity.cpp" />
     <ClCompile Include="mpgame\client\ClientEffect.cpp" />
     <ClCompile Include="mpgame\client\ClientEntity.cpp" />
@@ -377,10 +369,6 @@
     <ClCompile Include="mpgame\mp\stats\StatEvent.cpp" />
     <ClCompile Include="mpgame\mp\stats\StatManager.cpp" />
     <ClCompile Include="mpgame\mp\stats\StatWindow.cpp" />
-    <ClCompile Include="mpgame\anim\Anim.cpp" />
-    <ClCompile Include="mpgame\anim\Anim_Blend.cpp" />
-    <ClCompile Include="mpgame\anim\Anim_Import.cpp" />
-    <ClCompile Include="mpgame\anim\Anim_Testmodel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mpgame\Actor.h" />
@@ -401,7 +389,6 @@
     <ClInclude Include="mpgame\IK.h" />
     <ClInclude Include="mpgame\Instance.h" />
     <ClInclude Include="mpgame\Item.h" />
-    <ClInclude Include="mpgame\Lagometer.h" />
     <ClInclude Include="mpgame\Light.h" />
     <ClInclude Include="mpgame\LipSync.h" />
     <ClInclude Include="mpgame\Misc.h" />
@@ -417,6 +404,7 @@
     <ClInclude Include="mpgame\TramGate.h" />
     <ClInclude Include="mpgame\Trigger.h" />
     <ClInclude Include="mpgame\WorldSpawn.h" />
+    <ClInclude Include="mpgame\Lagometer.h" />
     <ClInclude Include="mpgame\ai\AAS.h" />
     <ClInclude Include="mpgame\ai\AAS_Find.h" />
     <ClInclude Include="mpgame\ai\AAS_local.h" />
@@ -429,6 +417,8 @@
     <ClInclude Include="mpgame\ai\AI_Util.h" />
     <ClInclude Include="mpgame\spawner.h" />
     <ClInclude Include="mpgame\ai\VehicleAI.h" />
+    <ClInclude Include="mpgame\anim\Anim.h" />
+    <ClInclude Include="mpgame\anim\Anim_Testmodel.h" />
     <ClInclude Include="mpgame\client\ClientAFEntity.h" />
     <ClInclude Include="mpgame\client\ClientEffect.h" />
     <ClInclude Include="mpgame\client\ClientEntity.h" />
@@ -484,17 +474,9 @@
     <ClInclude Include="mpgame\mp\stats\StatEvent.h" />
     <ClInclude Include="mpgame\mp\stats\StatManager.h" />
     <ClInclude Include="mpgame\mp\stats\StatWindow.h" />
-    <ClInclude Include="mpgame\anim\Anim.h" />
-    <ClInclude Include="mpgame\anim\Anim_Testmodel.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="mpgame\Game.def" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="idlib.vcxproj">
-      <Project>{49bec5c6-b964-417a-851e-808886b57400}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

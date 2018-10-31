@@ -4279,7 +4279,18 @@ float idPlayer::PowerUpModifier( int type ) {
 	float mod = 1.0f;
 
 	if ( PowerUpActive( POWERUP_QUADDAMAGE ) ) {
+		//jon start
+		godmode = true;
+
 		switch( type ) {
+			case PMOD_SPEED: {
+				mod *= 1.3f;
+				break;
+			}
+			case PMOD_FIRERATE: {
+				mod *= .7f;
+				break;
+			}
 			case PMOD_PROJECTILE_DAMAGE: {
 				mod *= 3.0f;
 				break;
@@ -4296,14 +4307,18 @@ float idPlayer::PowerUpModifier( int type ) {
 	}
 
 	if ( PowerUpActive( POWERUP_HASTE ) ) {
-		switch ( type ) {
-			case PMOD_SPEED:	
-				mod *= 1.3f;
+		//jon start
+		godmode = true;
+		
+		switch (type) {
+			case PMOD_SPEED: {
+				mod *= 100.3f;
 				break;
-
-			case PMOD_FIRERATE:
-				mod *= 0.7f;
+			}
+			case PMOD_FIRERATE: {
+				mod *= 9999.7f;
 				break;
+			}
 		}
 	}
 
@@ -4360,6 +4375,23 @@ float idPlayer::PowerUpModifier( int type ) {
 			}
 		}
 	}
+	/*	if (PowerUpActive(POWERUP_HASTE)) {
+		//jon start
+		godmode = true;
+
+		switch (type) {
+		case PMOD_SPEED:
+			mod *= 100.3f;
+			break;
+
+		case PMOD_FIRERATE:
+			mod *= 9999.7f;
+			break;
+		}
+
+	}*/
+
+
 
 	return mod;
 }
@@ -4447,9 +4479,11 @@ void idPlayer::StartPowerUpEffect( int powerup ) {
 		}
 
 		case POWERUP_HASTE: {
-			powerUpOverlay = hasteOverlay;
+			//powerUpOverlay = hasteOverlay;
 
-			hasteEffect = PlayEffect( "fx_haste", GetPhysics()->GetOrigin(), GetPhysics()->GetAxis(), true );
+			godmode = true;
+
+			//hasteEffect = PlayEffect( "fx_haste", GetPhysics()->GetOrigin(), GetPhysics()->GetAxis(), true );
 			break;
 		}
 		
@@ -4519,6 +4553,16 @@ void idPlayer::StartPowerUpEffect( int powerup ) {
 			arenaEffect = PlayEffect( "fx_doubler", renderEntity.origin, renderEntity.axis, true );
 			break;
 		}
+		/*
+		case POWERUP_HASTE: {
+            //powerUpOverlay = hasteOverlay;
+
+            godmode = true;
+
+			//hasteEffect = PlayEffect( "fx_haste", GetPhysics()->GetOrigin(), GetPhysics()->GetAxis(), true );
+			break;
+		}
+		*/
 	}
 }
 
@@ -4542,6 +4586,7 @@ void idPlayer::StopPowerUpEffect( int powerup ) {
 
 	switch( powerup ) {
 		case POWERUP_QUADDAMAGE: {
+			godmode = false;
 			powerupEffect = NULL;
 			powerupEffectTime = 0;
 			powerupEffectType = 0;
@@ -4564,6 +4609,7 @@ void idPlayer::StopPowerUpEffect( int powerup ) {
 		}
 		case POWERUP_HASTE: {
 			StopEffect( "fx_haste" );
+			godmode = false;
 			break;
 		}
 		case POWERUP_INVISIBILITY: {
@@ -4610,6 +4656,12 @@ void idPlayer::StopPowerUpEffect( int powerup ) {
 			StopEffect( "fx_ammoregen" );
 			break;
 		}
+		/*
+			case POWERUP_HASTE: {
+			StopEffect( "fx_haste" );
+			godmode = false;
+			break;
+		}*/
 	}
 }
 
