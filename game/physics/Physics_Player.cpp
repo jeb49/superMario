@@ -1367,7 +1367,12 @@ void idPhysics_Player::SetWaterLevel( void ) {
 	//
 	// get waterlevel, accounting for ducking
 	//
-	waterLevel = WATERLEVEL_NONE;
+	if (waterFlag == false){
+		waterLevel = WATERLEVEL_NONE;
+	}
+	else{
+		waterLevel = WATERLEVEL_HEAD;
+	}
 	waterType = 0;
 
 	bounds = clipModel->GetBounds();
@@ -2306,4 +2311,16 @@ void idPhysics_Player::SetClipModelNoLink( idClipModel *model ) {
 		delete clipModel;
 	}
 	clipModel = model;
+}
+
+/*
+===============
+idPhysics_Player::setWater
+===============
+*/
+void idPhysics_Player::setWater() {
+	waterFlag = true;
+	waterLevel = WATERLEVEL_HEAD;
+	SetWaterLevel();
+	
 }

@@ -78,7 +78,7 @@ public:
 	bool					IsCrouching( void ) const;
 	bool					OnLadder( void ) const;
 	const idVec3 &			PlayerGetOrigin( void ) const;	// != GetOrigin
-
+	void					setWater( void );
 public:	// common physics interface
 	bool					Evaluate( int timeStepMSec, int endTimeMSec );
 	void					UpdateTime( int endTimeMSec );
@@ -141,6 +141,8 @@ private:
 	float					playerSpeed;
 	idVec3					viewForward;
 	idVec3					viewRight;
+
+	bool					waterFlag;
 
 	// walk movement
 	bool					walking;

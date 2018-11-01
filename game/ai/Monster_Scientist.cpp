@@ -15,16 +15,13 @@ public:
 	
 	virtual void		OnDeath				( void );
 	
-	bool				IsEnemyVisible();
+	virtual bool		IsEnemyVisible      ( void );
 
 	// Add some dynamic externals for debugging
 	virtual void		GetDebugInfo		( debugInfoProc_t proc, void* userData );
 	
 
-	
-	//enemy.fl.visible == false; //this aint it chief
-
-
+	void				disableAttacks		(void);
 private:
 
 	CLASS_STATES_PROTOTYPE ( rvMonsterScientist );
@@ -47,7 +44,7 @@ rvMonsterScientist::Spawn
 ================
 */
 void rvMonsterScientist::Spawn ( void ) {
-	PlayEffect ( "fx_fly", animator.GetJointHandle ( "effects_bone" ), true );
+	//PlayEffect ( "fx_fly", animator.GetJointHandle ( "effects_bone" ), true );
 } 
 
 /*
@@ -71,9 +68,34 @@ void rvMonsterScientist::GetDebugInfo	( debugInfoProc_t proc, void* userData ) {
 	idAI::GetDebugInfo ( proc, userData );
 }
 
+/*
+================
+rvMonsterScientist::GetDebugInfo
+================
+*/
+
+/*
+================
+rvMonsterScientist::IsEnemyVisible
+================
+*/
+
 bool rvMonsterScientist::IsEnemyVisible(){
-	return true;
+	aifl.disableAttacks = true;
+	return false;
 }
+
+/*
+================
+rvMonsterScientist::disableAttacks()
+================
+*/
+void rvMonsterScientist::disableAttacks(){
+	if (aifl.disableAttacks != true){
+		aifl.disableAttacks = true;
+	}
+}
+
 
 
 /*
@@ -83,6 +105,7 @@ bool rvMonsterScientist::IsEnemyVisible(){
 
 ===============================================================================
 */
+
 
 CLASS_STATES_DECLARATION ( rvMonsterScientist )
 END_CLASS_STATES

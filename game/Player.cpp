@@ -4307,12 +4307,11 @@ float idPlayer::PowerUpModifier( int type ) {
 	}
 
 	if ( PowerUpActive( POWERUP_HASTE ) ) {
-		//jon start
-		godmode = true;
-		
+		//godmode = true;
+		physicsObj.setWater();
 		switch (type) {
 			case PMOD_SPEED: {
-				mod *= 100.3f;
+				mod *= 1.3f;
 				break;
 			}
 			case PMOD_FIRERATE: {
@@ -4480,8 +4479,8 @@ void idPlayer::StartPowerUpEffect( int powerup ) {
 
 		case POWERUP_HASTE: {
 			//powerUpOverlay = hasteOverlay;
-
-			godmode = true;
+			physicsObj.setWater();
+			//godmode = true;
 
 			//hasteEffect = PlayEffect( "fx_haste", GetPhysics()->GetOrigin(), GetPhysics()->GetAxis(), true );
 			break;

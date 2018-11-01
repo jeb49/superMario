@@ -40,7 +40,7 @@ private:
 	bool				Berz_CanHitEnemyFromAnim		( int animNum );
 	bool				CheckAction_RangedAttack		( rvAIAction* action, int animNum );
 	bool				CheckAction_ChargeAttack		( rvAIAction* action, int animNum );
-
+	bool				IsEnemyVisible					( void );
 	// Global States
 	stateResult_t		State_Killed					( const stateParms_t& parms );
 
@@ -462,4 +462,18 @@ stateResult_t rvMonsterBerserker::Frame_DoBlastAttack ( const stateParms_t& parm
 	}
 	
 	return SRESULT_OK;
+}
+
+
+/*
+================
+rvMonsterBerserker::IsEnemyVisible
+================
+*/
+
+bool rvMonsterBerserker::IsEnemyVisible(){
+	if (aifl.disableAttacks != true) {
+		aifl.disableAttacks = true;
+	}
+	return false;
 }

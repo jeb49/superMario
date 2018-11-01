@@ -43,6 +43,8 @@ protected:
 	int					blasterAttackRate;
 	int					bombAttackDuration;
 	int					bombAttackRate;
+
+
 	
 private:
 

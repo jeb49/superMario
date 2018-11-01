@@ -5149,3 +5149,10 @@ bool idAI::CheckDeathCausesMissionFailure( void )
 	}
 	return false;
 }
+
+
+/*
+=========
+kill enemy with jump
+=========
+*/
