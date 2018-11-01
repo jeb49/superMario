@@ -6,6 +6,7 @@
 CLASS_DECLARATION( idPhysics_Actor, idPhysics_Player )
 END_CLASS
 
+
 // movement parameters
 const float PM_STOPSPEED		= 100.0f;
 const float PM_SWIMSCALE		= 0.5f;
@@ -45,6 +46,8 @@ const int PMF_ALL_TIMES			= (PMF_TIME_WATERJUMP|PMF_TIME_LAND|PMF_TIME_KNOCKBACK
 
 int c_pmove = 0;
 
+
+
 float idPhysics_Player::Pm_Accelerate( void ) {
 	return gameLocal.IsMultiplayer() ? PM_ACCELERATE_MP : PM_ACCELERATE_SP;
 }
@@ -72,6 +75,7 @@ float idPhysics_Player::CmdScale( const usercmd_t &cmd ) const {
 
 	forwardmove = cmd.forwardmove;
 	rightmove = cmd.rightmove;
+
 
 	// since the crouch key doubles as downward movement, ignore downward movement when we're on the ground
 	// otherwise crouch speed will be lower than specified
@@ -1685,6 +1689,7 @@ idPhysics_Player::idPhysics_Player( void ) {
 	groundMaterial = NULL;
 	ladder = false;
 	ladderNormal.Zero();
+	waterFlag = false;
 	waterLevel = WATERLEVEL_NONE;
 	waterType = 0;
 }
